@@ -8,10 +8,10 @@
         <EntityTypeShape EntityType="Model.Category" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.HotelTable" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Menu" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.OrderRecord" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="Model.Category_Key" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_HOTELTABLE" ManuallyRouted="false" />
-      </Diagram>
+        <EntityTypeShape EntityType="Model.OrderRecord" Width="1.5" PointX="3" PointY="0.875" />
+        <AssociationConnector Association="Model.FK_HOTELTABLE" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
