@@ -6,11 +6,10 @@
     <edmx:Diagrams>
       <Diagram DiagramId="6a857c00ef524ad1be14eeb8fc4b4644" Name="Diagram1">
         <EntityTypeShape EntityType="Model.Category" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.HotelTable" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Menu" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
         <AssociationConnector Association="Model.Category_Key" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="Model.OrderRecord" Width="1.5" PointX="3" PointY="0.875" />
-        <AssociationConnector Association="Model.FK_HOTELTABLE" />
+        <EntityTypeShape EntityType="Model.HotelTable" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.OrderRecord" Width="1.5" PointX="2.75" PointY="0.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
