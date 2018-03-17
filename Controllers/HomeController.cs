@@ -58,7 +58,7 @@ namespace CoinPaymentsDemo.Controllers
                 transaction.Address = res["address"];
                 context.SaveChanges();
             }
-            return Json(transaction);
+            return Json(new { transaction= transaction , ipn_url= GetBaseUrl() + "Home/Notification" });
         }
         [HttpPost]
         [ActionName("Notification")]
