@@ -1,0 +1,40 @@
+﻿@model List<CoinPaymentsDemo.Models.Transaction>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+<div class="row">
+    <form action='@Url.Action("CreateTransaction")' method="post">
+        <label>Amount</label>
+        <input type="text" name="amount" />
+        <input type="submit" value="Create Transaction" />
+    </form>
+
+    <table border="1">
+        <tr>
+            <th>Amount</th>
+            <th>Status Url</th>
+            <th>QRCode Url</th>
+            <th>Status Message</th>
+            <th>Address to send coins to</th>
+        </tr>
+
+        @foreach (var modelObj in Model)
+        {
+            <tr>
+                <td>@modelObj.Amount</td>
+                <td>@modelObj.StatusUrl</td>
+                <td>@modelObj.QRcodeUrl</td>
+                <td>@modelObj.StatusMessage</td>
+                <td>@modelObj.Address</td>
+            </tr>
+        }
+    </table>
+
+</div>
