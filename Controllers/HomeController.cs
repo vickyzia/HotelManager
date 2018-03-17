@@ -49,12 +49,13 @@ namespace CoinPaymentsDemo.Controllers
             result.TryGetValue("error", out err);
             result.TryGetValue("result", out res);
             if ((string)err == "ok"){
-                transaction.TxnId = res.txn_id;
-                transaction.ConfirmationsNeeded = int.Parse(res.confirms_needed);
-                transaction.TimeOut = res.timeout;
-                transaction.StatusUrl = res.status_url;
-                transaction.QRcodeUrl = res.qrcode_url;
-                transaction.Address = res.address;
+                transaction.Amount = double.Parse(res["amount"]);//Amount in currency to send
+                transaction.TxnId = res["txn_id"];
+                transaction.ConfirmationsNeeded = int.Parse(res["confirms_needed"]);
+                transaction.TimeOut = res["timeout"];
+                transaction.StatusUrl = res["status_url"];
+                transaction.QRcodeUrl = res["qrcode_url"];
+                transaction.Address = res["address"];
                 context.SaveChanges();
             }
             return Json(transaction);
