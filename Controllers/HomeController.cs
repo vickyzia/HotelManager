@@ -42,7 +42,7 @@ namespace CoinPaymentsDemo.Controllers
             list.Add("currency1", "USD");
             list.Add("currency2", "LTCT");
             list.Add("invoice", transaction.Id.ToString());
-            list.Add("ipn_url", GetBaseUrl() + "/Home/Notification");
+            list.Add("ipn_url", GetBaseUrl() + "Home/Notification");
             var result = coinPayments.CallAPI("create_transaction", list);
             dynamic res;
             dynamic err;
