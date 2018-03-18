@@ -14,6 +14,7 @@ namespace CoinPaymentsDemo.Controllers
         public ActionResult Index()
         {
             PaymentContext context = new PaymentContext();
+            ViewBag.Initial = true;
             return View(context.Transactions.ToList());
         }
 
@@ -32,7 +33,7 @@ namespace CoinPaymentsDemo.Controllers
         }
         [HttpPost]
         [ActionName("CreateTransaction")]
-        public JsonResult CreateTransaction(int amount) {
+        public ActionResult CreateTransaction(int amount) {
             PaymentContext context = new PaymentContext();
             var transaction = context.Transactions.Add(new Models.Transaction { Amount = amount, Status = -5, StatusMessage = "Pending" });
             context.SaveChanges();
@@ -48,7 +49,8 @@ namespace CoinPaymentsDemo.Controllers
             dynamic err;
             result.TryGetValue("error", out err);
             result.TryGetValue("result", out res);
-            if ((string)err == "ok"){
+            if ((string)err == "ok")
+            {
                 transaction.Amount = double.Parse(res["amount"]);//Amount in currency to send
                 transaction.TxnId = res["txn_id"];
                 transaction.ConfirmationsNeeded = int.Parse(res["confirms_needed"]);
@@ -57,8 +59,13 @@ namespace CoinPaymentsDemo.Controllers
                 transaction.QRcodeUrl = res["qrcode_url"];
                 transaction.Address = res["address"];
                 context.SaveChanges();
+                ViewBag.Created = true;
             }
-            return Json(new { transaction= transaction , ipn_url= GetBaseUrl() + "Home/Notification" });
+            else {
+                ViewBag.Created = false;
+            }
+            ViewBag.Initial = false;
+            return View("Index", context.Transactions.ToList());
         }
         [HttpPost]
         [ActionName("Notification")]
